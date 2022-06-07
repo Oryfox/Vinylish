@@ -40,7 +40,7 @@
       <div class="navbar-buttons">
         <div
           class="navbar-button"
-          @click="this.parent.$refs.current.toggleNewRecordModal()"
+          @click="createNew"
           v-if="this.$route.name === 'records'"
         >
           <svg
@@ -99,6 +99,11 @@ export default {
     this.cookie = this.$cookies.get("token");
     emitter.on("tokenSet", (token) => (this.cookie = token));
     emitter.on("tokenRemove", () => (this.cookie = null));
+  },
+  methods: {
+    createNew() {
+      emitter.emit("createNew");
+    },
   },
 };
 </script>
