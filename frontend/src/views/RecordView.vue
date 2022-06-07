@@ -72,8 +72,8 @@ export default {
     };
   },
   created() {
-    this.getRecords();
     emitter.on("createNew", () => this.toggleNewRecordModal());
+    this.getRecords();
   },
   methods: {
     getRecords() {
