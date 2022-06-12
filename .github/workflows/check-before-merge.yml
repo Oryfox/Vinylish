@@ -1,0 +1,17 @@
+name: Check build ability before merge
+
+on:
+  pull_request:
+    branches:
+    - master
+    - dev
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag docker.oryfox.de/vinylapi
